@@ -1,0 +1,7 @@
+// The repository's root build: each plugin is a standalone Gradle build of its own (copy one out and it still
+// builds), included here so one `./gradlew build` builds and tests them all.
+rootProject.name = 'edge-plugins'
+
+includeBuild('plugin-template')
+includeBuild('plugins/debug')
+includeBuild('plugins/crawler-feeder')

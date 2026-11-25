@@ -1,0 +1,21 @@
+// `./gradlew build` here builds and tests every included plugin build (see settings.gradle); `./gradlew sha256`
+// prints every plugin jar's SHA-256. -PfrontcacheMavenLocal reaches the included builds too.
+def pluginBuilds = gradle.includedBuilds
+
+tasks.register('build') {
+	group = 'build'
+	description = 'Build and test every plugin'
+	dependsOn pluginBuilds.collect { it.task(':build') }
+}
+
+tasks.register('clean') {
+	group = 'build'
+	description = 'Clean every plugin'
+	dependsOn pluginBuilds.collect { it.task(':clean') }
+}
+
+tasks.register('sha256') {
+	group = 'build'
+	description = 'Print the SHA-256 of every plugin jar'
+	dependsOn pluginBuilds.collect { it.task(':sha256') }
+}

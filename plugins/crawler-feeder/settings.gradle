@@ -1,0 +1,2 @@
+// The crawler-feeder example plugin - a standalone build (the repository root's build also builds it).
+rootProject.name = 'frontcache-plugin-crawler-feeder'
